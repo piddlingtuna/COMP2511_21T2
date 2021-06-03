@@ -1,4 +1,4 @@
-# Tutorial Questions
+# Tutorial
 
 ## Prelude
 
@@ -14,7 +14,13 @@ Please ask via email or the forum if you need any help with above.
 
 ## Code
 
-I have added comments to explain the code examples in this tute. I recommend reading them in the following order:
+I recommend reading them in the following order:
 1. `src/HelloWorld.java`
 2. `src/Sum.java`
 3. `src/Shouter.java`
+
+## Questions
+
+What is an IDE?
+
+> An integrated development environment (IDE) is a collection of programs neatly wrapped up into a single graphical user inteface (GUI) to write software. Common features include a text editor, a debugger, build tools, syntax highlighting, code search, code completion, integrated version control, etc. COMP2511 uses VSCode as an IDE.

@@ -3,6 +3,7 @@
 ## Clarifications
 
 - Challenge exercises are not worth any marks.
+- Late enrolments mean groups aren't completely finalised... will sort out in the lab.
 
 
 ## Assignment

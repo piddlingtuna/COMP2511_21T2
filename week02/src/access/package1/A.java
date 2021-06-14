@@ -1,5 +1,8 @@
 package access.package1;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * A class defining variables with different access modifiers
  */

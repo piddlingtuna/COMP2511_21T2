@@ -19,6 +19,8 @@ public class B extends A {
         System.out.println("var: " + b.var);
         System.out.println("varPub: " + b.varPub);
         System.out.println("varPro: " + b.varPro);
+        
+        protectedMethod();
 
         A a = b;
         // TODO Does it make a difference that we're accessing these fields on
@@ -30,10 +32,12 @@ public class B extends A {
 
     // TODO Which of these two methods will work if uncommented (note the
     // different access modifier)?
-//    @Override
-//    public void protectedMethod() {
-//
-//    }
+    
+    // Overriding
+    @Override
+    protected void protectedMethod() {
+
+   }
 
 //    @Override
 //    void protectedMethod() {
@@ -41,3 +45,5 @@ public class B extends A {
 //    }
 
 }
+
+// public -> protected -> default -> private

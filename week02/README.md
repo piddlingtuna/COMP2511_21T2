@@ -47,6 +47,8 @@ Look at `src/shapes`.
 
 Look at `src/access`.
 
+Stuff to do with encapsulation
+
 ![Access Modifiers in Java](./Access_Modifiers_in_Java.png)
 
 

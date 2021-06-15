@@ -8,9 +8,8 @@ import unsw.archaic_fs.FileWriteOptions;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.FileNotFoundException;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.NoSuchFileException;
 import java.util.EnumSet;
 
@@ -67,4 +66,42 @@ public class ArchaicFsTest {
     // - File Writing/Reading with various options (appending for example)
     // - Cd'ing .. on the root most directory (shouldn't error should just remain on root directory)
     // - many others...
+    
+    @Test
+    public void testAppendToFile() {
+        ArchaicFileSystem fs = new ArchaicFileSystem();
+        assertDoesNotThrow(() -> {
+            
+        });
+    }
+    
+    @Test
+    public void testCdRootDirectory() {
+        ArchaicFileSystem fs = new ArchaicFileSystem();
+        assertDoesNotThrow(() -> {
+            
+        });
+    }
+    
+    @Test
+    public void testMkdirFileAlreadyExists() {
+        ArchaicFileSystem fs = new ArchaicFileSystem();
+        
+        assertDoesNotThrow(() -> {
+            
+        });
+
+        // Try to make a directory that already exists
+        assertThrows(FileAlreadyExistsException.class, () -> {
+            
+        });
+    }
+    
+    @Test
+    public void integrationTest() {
+        ArchaicFileSystem fs = new ArchaicFileSystem();
+        assertDoesNotThrow(() -> {
+            
+        });
+    }
 }

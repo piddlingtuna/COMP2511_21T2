@@ -8,6 +8,7 @@ import java.util.List;
  *
  */
 public class Seminar {
+
     private LocalDate start;
 
     private List<String> attendees;
@@ -19,4 +20,13 @@ public class Seminar {
     public List<String> getAttendees() {
         return attendees;
     }
+    
+    public LocalDate book(String employee, List<LocalDate> availability) {
+        
+        if (attendees.size < 10) {
+            // safe
+        }
+        return null;
+    }
+
 }

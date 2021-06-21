@@ -6,21 +6,24 @@ In your project groups, answer the following questions.
 
 1. Can you override a static method?
 
+
 2. What is output by executing `A.f()` in the following?
 
     ```java
     public class A {
         public static void f() {
             C c = new C();
+            c.speak(); // "quack"
+            B b = new C();
             c.speak();
-            B b = c;
-            b.speak();
+            // D d = new B(); not safe
+            b.speak(); // "quack"
+            
             b = new B();
-            b.speak();
-            c.speak();
+            b.speak(); // "moo"
+            c.speak(); // "quack"
         }
     }
-
 
     public class B {
         public void speak() {
@@ -29,11 +32,63 @@ In your project groups, answer the following questions.
     }
 
 
-    public class C extends B {
+    public class C extends B {        
+        public void print() {
+            System.out.println(privateVariable);
+        }
+        
+        @Override
         public void speak() {
             System.out.println("quack");
+            System.out.println(privateVariable);
         }
     }
+    
+    public class D extends C {
+        @Override
+        public void speak() {
+            System.out.println("hi");
+        }
+        
+        public void run() {
+            System.out.println("running");
+        }
+    }
+    ```
+    
+    ```java
+    
+    public interface Drawer {
+    
+        public void draw();
+    }
+    
+    public class Rectangle implements Drawer {
+        private int width;
+        private int height;
+    }
+    
+    public class Square implements Drawer {
+        private int side;
+    }
+    
+    public class Wings {
+    
+    }
+    
+    public class Bird implements CanFly {
+    
+        private Wings wings;
+    
+        public void fly() {}
+    }
+    
+    public class Penguin {
+        public void fly() {
+            throw new PenguinsCantActuallyFlyException();
+        }
+    }
+    
     ```
 
 
@@ -52,8 +107,8 @@ In your project groups, answer the following questions.
     }
 
     public class B {
-        private int x;
-        private static int y;
+        private int x; // instance
+        private static int y; // class
 
         public int getX() {
             return x;
@@ -99,14 +154,26 @@ Look at the `OnlineSeminar` class. How does this violate the Liskov Substitution
 
 1. What is the difference between unit and integration testing?
 
+Unit testing is used to make sure a small piece of code works in isolation
+
+integration testing tests to make sure different pieces of codes work together
+
+
 2. What does test-driven development look like in Java? 
+
+// What class/objection declarations - define the API
+
+// Tests first - black box tests
+
+// Implementation second
+
 
 3. Inside the `src/unsw` folder is `archaic_fs` and `test` that mocks a very simple file system and tests it respectively, you can see 3 already written in there.
 
     - This simulates a 'linux' like Inode system (arguably pretty badly but we'll extend on it next week to be better).  You don't have to understand how it works under the hood, since it mocks the typical linux commands.
     - Commands available;
         - `cd(path)`
-            - Throws NoSuchFileExpception is a part of the path can't be found
+            - Throws NoSuchFileException is a part of the path can't be found
         - `mkdir(path, createParentDirectories, ignoreIfExists)`
             - Throws FileNotFoundException if a part of the path can't be found and createParentDirectories is false
             - Throws FileAlreadyExistsException if the folder already exists and ignoreIfExists is false

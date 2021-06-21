@@ -67,19 +67,12 @@ public class ArchaicFsTest {
     // - Cd'ing .. on the root most directory (shouldn't error should just remain on root directory)
     // - many others...
     
-    @Test
-    public void testAppendToFile() {
-        ArchaicFileSystem fs = new ArchaicFileSystem();
-        assertDoesNotThrow(() -> {
-            
-        });
-    }
     
     @Test
     public void testCdRootDirectory() {
         ArchaicFileSystem fs = new ArchaicFileSystem();
         assertDoesNotThrow(() -> {
-            
+            fs.cd("/usr");
         });
     }
     
@@ -88,20 +81,26 @@ public class ArchaicFsTest {
         ArchaicFileSystem fs = new ArchaicFileSystem();
         
         assertDoesNotThrow(() -> {
-            
+            fs.mkdir("/usr/bin/stuff", true, false);
+            fs.mkdir("/usr/bin/stuff", true, true);
         });
 
         // Try to make a directory that already exists
         assertThrows(FileAlreadyExistsException.class, () -> {
-            
+            fs.mkdir("/usr/bin/stuff", true, false);
         });
     }
+    
     
     @Test
     public void integrationTest() {
         ArchaicFileSystem fs = new ArchaicFileSystem();
+    
         assertDoesNotThrow(() -> {
-            
+            fs.mkdir("/usr/bin/example", true, false);
+            fs.cd("/usr/bin/example");
+            fs.writeToFile("stuff.txt", "STUFF", EnumSet.of(FileWriteOptions.CREATE, FileWriteOptions.TRUNCATE));
+            assertEquals("STUFF", fs.readFromFile("stuff.txt"));
         });
     }
 }

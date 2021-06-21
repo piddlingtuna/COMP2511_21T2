@@ -8,6 +8,7 @@ import java.util.List;
  *
  */
 public class OnlineSeminar extends Seminar {
+    
     private String videoURL;
 
     private List<String> watched;

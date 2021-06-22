@@ -45,6 +45,18 @@ In case you wish to run the application to understand how these user stories int
 
 ## B. Patterns - Strategy and State Pattern
 
+### Refactoring Guru
+
+https://refactoring.guru/design-patterns/state
+
+https://refactoring.guru/design-patterns/state
+
+### Simplified UML
+
+There is a simplified example [ here](uml.png).
+
+### Quaint
+
 Currently the above specifications have been implemented into a paint application called `quaint`.  It uses strategy patterns to handle various different tools as well as a state pattern to handle the current state of the canvas.
 
 Your task is to investigate the [UML here](Quaint.pdf) and talk about how you would implement the following feature;

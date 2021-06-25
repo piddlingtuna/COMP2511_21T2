@@ -14,10 +14,6 @@ public class Trainer {
 
     private List<Seminar> seminars;
 
-    public List<Seminar> getSeminars() {
-        return seminars;
-    }
-
     /**
      * Try to book one of this trainer's seminars.
      * @param employee

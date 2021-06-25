@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.nio.file.FileAlreadyExistsException;
+import java.io.FileNotFoundException;
 import java.nio.file.NoSuchFileException;
 import java.util.EnumSet;
 
@@ -66,41 +66,46 @@ public class ArchaicFsTest {
     // - File Writing/Reading with various options (appending for example)
     // - Cd'ing .. on the root most directory (shouldn't error should just remain on root directory)
     // - many others...
-    
-    
+
+    // Some Tutor Examples....
+
     @Test
-    public void testCdRootDirectory() {
+    public void testWriteNonExistentFile() {
         ArchaicFileSystem fs = new ArchaicFileSystem();
-        assertDoesNotThrow(() -> {
-            fs.cd("/usr");
-        });
-    }
-    
-    @Test
-    public void testMkdirFileAlreadyExists() {
-        ArchaicFileSystem fs = new ArchaicFileSystem();
-        
-        assertDoesNotThrow(() -> {
-            fs.mkdir("/usr/bin/stuff", true, false);
-            fs.mkdir("/usr/bin/stuff", true, true);
+
+        assertThrows(FileNotFoundException.class, () -> {
+            fs.writeToFile("test.txt", "My Content", EnumSet.of(FileWriteOptions.APPEND));
         });
 
-        // Try to make a directory that already exists
-        assertThrows(FileAlreadyExistsException.class, () -> {
-            fs.mkdir("/usr/bin/stuff", true, false);
+        assertThrows(FileNotFoundException.class, () -> {
+            fs.writeToFile("test.txt", "My Content", EnumSet.of(FileWriteOptions.TRUNCATE));
         });
     }
-    
-    
+
     @Test
-    public void integrationTest() {
+    public void testAppendAndTruncateToFile() {
         ArchaicFileSystem fs = new ArchaicFileSystem();
-    
+
         assertDoesNotThrow(() -> {
-            fs.mkdir("/usr/bin/example", true, false);
-            fs.cd("/usr/bin/example");
-            fs.writeToFile("stuff.txt", "STUFF", EnumSet.of(FileWriteOptions.CREATE, FileWriteOptions.TRUNCATE));
-            assertEquals("STUFF", fs.readFromFile("stuff.txt"));
+            fs.writeToFile("test.txt", "My Content", EnumSet.of(FileWriteOptions.CREATE, FileWriteOptions.TRUNCATE));
+            assertEquals("My Content", fs.readFromFile("test.txt"));
+            fs.writeToFile("test.txt", "\nMy Content", EnumSet.of(FileWriteOptions.APPEND));
+            assertEquals("My Content\nMy Content", fs.readFromFile("test.txt"));
+            fs.writeToFile("test.txt", "Other", EnumSet.of(FileWriteOptions.TRUNCATE));
+            assertEquals("Other", fs.readFromFile("test.txt"));
+        });
+    }
+
+    @Test
+    public void testCdingUpwardsOnRootDirectory() {
+        ArchaicFileSystem fs = new ArchaicFileSystem();
+
+        assertDoesNotThrow(() -> {
+            assertEquals("", fs.cwd());
+            fs.cd("..");
+            assertEquals("", fs.cwd());
+            fs.cd("..");
+            assertEquals("", fs.cwd());
         });
     }
 }

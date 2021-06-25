@@ -6,6 +6,8 @@ In your project groups, answer the following questions.
 
 1. Can you override a static method?
 
+No - a static method is attached to the class, not the instance.
+
 
 2. What is output by executing `A.f()` in the following?
 
@@ -18,11 +20,17 @@ In your project groups, answer the following questions.
             c.speak();
             // D d = new B(); not safe
             b.speak(); // "quack"
-            
             b = new B();
             b.speak(); // "moo"
             c.speak(); // "quack"
         }
+        /*
+        Output:
+        quack
+        quack
+        moo
+        quack
+        */
     }
 
     public class B {
@@ -31,64 +39,89 @@ In your project groups, answer the following questions.
         }
     }
 
-
-    public class C extends B {        
-        public void print() {
-            System.out.println(privateVariable);
-        }
-        
+    public class C extends B {
         @Override
         public void speak() {
             System.out.println("quack");
-            System.out.println(privateVariable);
         }
     }
     
     public class D extends C {
+        private int privateAttribute;
+        
         @Override
         public void speak() {
-            System.out.println("hi");
-        }
-        
-        public void run() {
-            System.out.println("running");
+            System.out.println("hello");
+            System.out.println(privateAttribute);
         }
     }
     ```
+
+    
+    Below is an example where it is better to use an interface over a superclass.
     
     ```java
-    
     public interface Drawer {
-    
         public void draw();
     }
     
     public class Rectangle implements Drawer {
         private int width;
         private int height;
+        
+        public void draw() {
+        
+        }
     }
     
     public class Square implements Drawer {
         private int side;
+        
+        public void draw() {    
     }
+    ```
     
-    public class Wings {
     
-    }
+    Below is a problematic case of inheritance.
     
-    public class Bird implements CanFly {
-    
-        private Wings wings;
-    
-        public void fly() {}
-    }
-    
-    public class Penguin {
+    ```java
+    public class Bird {    
         public void fly() {
-            throw new PenguinsCantActuallyFlyException();
+        
         }
     }
     
+    public class Penguin extends Bird {
+        public void fly() {
+            throw new Exception("Penguins can't fly");
+        }
+    }
+    ```
+    
+    Below is an example where it is better to use composition over inheritance.
+    
+    ```java
+    public interface Flyable() {
+        public void fly();
+    }
+    
+    public class Wings implements Flyable{
+        public void fly() {
+        
+        }
+    }
+    
+    public class Bird implements Flyable {
+        private Wings wings;
+        
+        public void fly() {
+            wings.fly();
+        }
+    }
+    
+    public class Penguin {
+        // No fly method
+    }
     ```
 
 
@@ -104,6 +137,11 @@ In your project groups, answer the following questions.
             System.out.println(b1.getX() + " " + b1.getY());
             System.out.println(b2.getX() + " " + b2.getY());
         }
+        /*
+        Output:
+        1 1
+        0 1
+        */
     }
 
     public class B {
@@ -142,13 +180,35 @@ In the `unsw.training` package there is some skeleton code for a training system
 In the TrainingSystem class there is a method to book a seminar for an employee given the dates on which they are available. This method violates the principle of least knowledge (Law of Demeter).
 
 1. How and why does it violate this principle?
+
+The `TrainingSystem` should only be interacting with 'friends'. This means it shouldn't call methods on objects returned from methods. No doing this:
+```java
+object.getSomething().doSomething()
+```
+
+
 2. In violating this principle, what other properties of this design are not desirable?
+
+- The design is very tighly coupled. `TrainingSystem` is dependent on both `Trainer` and `Seminar`.
+- `TrainingSystem` has low cohesion as any change to the system means you have to change this class.
+- `Seminar` is poorly encapsulated. It should control the number of attendees and not rely on `TrainingSystem`.
+
+
 3. Refactor the code so that the principle is no longer violated. How has this affected other properties of the design?
+
+Basically fix the problems in 2.
+
+
 4. More generally, are getters essentially a means of violating the principle of least knowledge? Does this make using getters bad design?
+
+Getters can make classes mre reusable, although they can be used to violate the principle of least knowledge. Try to only use getters for immutable data. Instead of `getAttendees()` (which returns a mutable `List`), create a copy or use `Collections.unmodifiableList(...)`. You could also create `addAttendee()` and `removeAttendee()` to allow clients to change attendees in a controlled manner.
+
 
 ### Part 2: Liskov Substitution Principle
 
 Look at the `OnlineSeminar` class. How does this violate the Liskov Substitution Principle?
+
+`OnlineSeminar` is very different from `Seminar`. It does not have a list of attendees and so a clinet interacting with a `Seminar` might have trouble if it is instead provided with a `OnlineSeminar`, which is possible since it's a subclass.
 
 ## C. Testing with JUnit 
 
@@ -161,11 +221,10 @@ integration testing tests to make sure different pieces of codes work together
 
 2. What does test-driven development look like in Java? 
 
-// What class/objection declarations - define the API
-
-// Tests first - black box tests
-
-// Implementation second
+- Define the API (class declarations)
+- Write (black box) tests
+- Implement all functionality
+- Pass the tests
 
 
 3. Inside the `src/unsw` folder is `archaic_fs` and `test` that mocks a very simple file system and tests it respectively, you can see 3 already written in there.

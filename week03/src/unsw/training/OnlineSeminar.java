@@ -7,8 +7,7 @@ import java.util.List;
  * record is kept of which employees have watched the seminar.
  *
  */
-public class OnlineSeminar extends Seminar {
-    
+public class OnlineSeminar {
     private String videoURL;
 
     private List<String> watched;

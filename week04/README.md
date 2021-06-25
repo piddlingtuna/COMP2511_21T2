@@ -10,13 +10,33 @@ a. Discuss the structure of this user story as a class, and create some acceptan
 
 b. What are story points? See [this Atlassian guide](https://www.atlassian.com/agile/project-management/estimation) for more information.
 
+1 1 2 3 5 ...
+
 c. How do we prioritise user stories and epic stories? See [this guide](https://www.productplan.com/learn/prioritize-product-backlog/) for more information.
+
+high
+
+medium
+
+low
 
 ### Part 2
 
 In groups, create user stories and acceptance criteria for the following requirements. Structure these stories under at least one epic story.  You are only going to do 2 out of the many user stories below to demonstrate this (the tutorial answers will have them all).
 
 As a creatively minded individual I want to ability to create beautiful art like the following french duck.
+
+User Stories for region selecting
+
+U: 1. As a user, I want the ability to select a boxed region and manipulate it so I can make changes to my art without having to erase it
+
+AC: 1. A box select tool (with image "box-select.png") should be added
+AC: 2. On clicking the tool, shape mode should be activated and a preview of my region should be shown when dragging out the select
+AC: 3. On finishing the drag, the selected region should be shown via a dashed outline
+AC: 4. Pressing escape at any point during the process prior to or after dragging should stop the dragging operation and no changes should be applied to the canvas, including the dashed outline of selection
+AC: 5. Pressing Ctrl + d should delete the region, clearing it out from canvas
+AC: 6. Pressing Ctrl + v should paste the region at the current cursor location
+AC: 7. By clicking on the region I should be able to drag it around to change it's location
 
 ![Le Quack](lequack.png)
 
@@ -47,13 +67,78 @@ In case you wish to run the application to understand how these user stories int
 
 ### Refactoring Guru
 
-https://refactoring.guru/design-patterns/state
+Guides:
 
-https://refactoring.guru/design-patterns/state
+- [Strategy Pattern](https://refactoring.guru/design-patterns/strategy)
+
+- [State Pattern](https://refactoring.guru/design-patterns/state)
 
 ### Simplified UML
 
-There is a simplified example [ here](uml.png).
+There is a simplified example [here](uml.png).
+
+weapon.use();
+
+public class Enemy {
+    
+    private EnemyState state;
+    
+    public void changeState() {
+    }
+    
+    
+
+}
+
+public interface EnemyState {
+    public void attack();
+}
+
+public class BattleState implments EnemyState {
+    
+    public void attack(Enemy enemy) {
+        ...
+        enemy.changeState(new Peaceful());
+    }
+    
+}
+
+public class PeacefulState implments EnemyState {
+
+}
+
+public class Character {
+
+    private Weapon weapon;
+}
+
+if (weapon == 'sword') {
+    doSomething();
+} else if (weapon == 'stake') {
+    doSomething();
+} else if (weapon == 'staff') {
+    
+} else if (weapon == 'gun') {
+
+}
+
+public interface weapon {
+    public void use();
+}
+
+public class Machette implements Weapon {
+
+}
+
+public class MachetteAndGun implements {
+    private Machette machette;
+    private Gun gun;
+    
+    public void use() {
+        machette.use();
+        gun.use();
+    }
+}
 
 ### Quaint
 

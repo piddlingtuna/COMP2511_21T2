@@ -7,36 +7,19 @@ public class TrainingSystem {
 
     public List<Trainer> trainers;
 
-    public LocalDate badbookTraining(String employee, List<LocalDate> availability) {
-        for (Trainer trainer : trainers) {
-            for (Seminar seminar : trainer.getSeminars()) {
-                for (LocalDate available : availability) {
-                    if (seminar.getStart().equals(available) &&
-                            seminar.getAttendees().size() < 10) {
-                        seminar.getAttendees().add(employee);
-                        return available;
-                    }
-                }
-            }
-        }
-        return null;
-    }
-    
-    // trainer.getSeminar().getAttendees.getWHATEVER() // violate the principle
-    // trainer.bookTraining() this is better
-    
     /**
-     * 
+     * Try to booking training for an employee, given their availability.
+     *
      * @param employee
      * @param availability
-     * @return The date of the seminar if booking was successful, otherwise null
+     * @return The date of their seminar if booking was successful, null there
+     * are no empty slots in seminars on the day they are available.
      */
     public LocalDate bookTraining(String employee, List<LocalDate> availability) {
         for (Trainer trainer : trainers) {
             LocalDate booked = trainer.book(employee, availability);
-            if (booked != null) {
+            if (booked != null)
                 return booked;
-            }
         }
         return null;
     }

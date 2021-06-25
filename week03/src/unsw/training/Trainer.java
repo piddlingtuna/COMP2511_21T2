@@ -17,24 +17,20 @@ public class Trainer {
     public List<Seminar> getSeminars() {
         return seminars;
     }
-    
-    public void addSeminar(Seminar seminar) {
-        seminars.add(seminar);
-    }
-    
-    public void removeSeminar(Seminar seminar) {
-        seminars.remove(seminar);
-    }
-    
+
+    /**
+     * Try to book one of this trainer's seminars.
+     * @param employee
+     * @param availability
+     * @return The date of the seminar if booking was successful, null if the
+     * trainer has no free slots in seminars on the available days.
+     */
     public LocalDate book(String employee, List<LocalDate> availability) {
         for (Seminar seminar : seminars) {
-            // seminar.getAttendees().add("what I want");
-            // seminar.getAttendees().remove(SOMETHING);
             LocalDate booked = seminar.book(employee, availability);
             if (booked != null)
                 return booked;
         }
         return null;
     }
-
 }

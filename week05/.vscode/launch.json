@@ -2,17 +2,17 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - EmphasisApplication",
+            "name": "Launch YoutubeTest",
             "request": "launch",
-            "mainClass": "emphasis.EmphasisApplication",
-            "projectName": "tute05_44f5c99b",
-            "vmArgs": "--module-path ./lib --add-modules javafx.controls,javafx.fxml,javafx.media -enableassertions"
+            "mainClass": "youtube.YoutubeTest",
+            "projectName": "week05_b026b98"
         },
         {
             "type": "java",
-            "name": "Launch Main",
+            "name": "Launch EmphasisApplication",
             "request": "launch",
-            "mainClass": "emphasis.Main",
+            "mainClass": "emphasis.EmphasisApplication",
+            "projectName": "week05_b026b98",
             "vmArgs": "--module-path ./lib --add-modules javafx.controls,javafx.fxml,javafx.media -enableassertions"
         }
     ]

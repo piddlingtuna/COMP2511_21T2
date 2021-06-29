@@ -1,5 +1,25 @@
 # Tutorial 05
 
+## Before we begin...
+
+### Class Marks
+
+- All of your tutorial and lab marks should be available by the end of this week.
+- 0.5 marks per week for attendance.
+- 0.5 marks per week for being active.
+
+### Project Check-ins
+
+- Please show me your Gitlab Issues :)
+- Please discuss your project assumptions with me :). They need to be approved by me.
+- The project is due on 5pm Friday 2nd July (Week 5). Yes, I know, not a lot of time :/
+
+
+### Notes
+
+- [Observer Pattern](https://refactoring.guru/design-patterns/observer)
+- [JavaFX Notes](http://tutorials.jenkov.com/javafx/overview.html)
+
 ## A. Observer Pattern
 
 In `src/youtube`, create a model for the following requirements of a Youtube-like video creating and watching service using the Observer Pattern:

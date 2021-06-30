@@ -12,7 +12,7 @@
 
 - Please show me your Gitlab Issues :)
 - Please discuss your project assumptions with me :). They need to be approved by me.
-- The project is due on 5pm Friday 2nd July (Week 5). Yes, I know, not a lot of time :/
+- The milestone 1 is due on 9pm Friday 2nd July (Week 5). Yes, I know, not a lot of time :/
 
 
 ### Notes

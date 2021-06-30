@@ -7,10 +7,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * Emphasis example JavaFX application.
+ * Example JavaFX application.
  */
 public class EmphasisApplication extends Application {
-
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Emphasis");
@@ -27,5 +26,4 @@ public class EmphasisApplication extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }

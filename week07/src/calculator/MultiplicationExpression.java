@@ -1,5 +1,6 @@
 package calculator;
 
+// Recursive Case
 public class MultiplicationExpression implements Expression {
     
     private Expression e1;

@@ -15,6 +15,11 @@ public class DivisionExpression implements Expression {
      * @postconditins - e1 / e2
      */
     public double compute() {
+        assert(e1 != null && e2 != null);
+        // divisive programming
+        if (e2.compute() == 0) {
+            throw new CalculatorException("does not meet precondition")
+        }
         return e1.compute() / e2.compute();
     }
 

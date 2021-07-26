@@ -1,5 +1,5 @@
 package fs.model;
 
-public class Inode {
+public abstract class Inode {
     
 }

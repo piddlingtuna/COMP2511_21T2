@@ -1,5 +1,5 @@
 package fs.model;
 
-public class File {
+public class File extends Inode {
     
 }

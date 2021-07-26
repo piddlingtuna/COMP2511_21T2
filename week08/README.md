@@ -51,6 +51,11 @@ Inside `src/stack`, there are a series of stubs for a `Stack` class which takes 
 
 Iterator is a design pattern baked into the Java language.
 
+Iterator iter = tree.iterator();
+while (iter.hasNext()) {
+    E item = iter.next();
+}
+
 [Iterator](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Iterator.html)
 
 [Iterable](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Iterable.html)
@@ -60,7 +65,10 @@ Iterator is a design pattern baked into the Java language.
 Implement the methods so that the tests pass, using an `ArrayList` to store the internal data structure. Answer the following questions:
 
 1. What is `E`? 
+// parametrized type
+
 2. What is the `Iterable` interface? Why does it have an `E` as well? What methods does it force us to implement?
+
 3. When completing `toArrayList`, why do we need to make a copy rather than just returning our internal ArrayList?
 4. What does the `.iterator()` method allow us to do? Discuss the test inside `StackTest.java`.
 

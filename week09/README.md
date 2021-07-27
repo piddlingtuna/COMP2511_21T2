@@ -35,6 +35,12 @@ Look at the `CharacterBase` class.
 
 [Decorator Pattern](https://refactoring.guru/design-patterns/decorator)
 
+```python
+@app.route("/")
+def index():
+    return "Hello World!"
+```
+
 We want to add different sorts of armour.
 
 * A helmet reduces the amount of damage inflicted upon a character by 1 point.
@@ -47,7 +53,6 @@ Assume that, as this game takes place in a virtual world, there are no restricti
 ### D. Factory Pattern
 
 [Factory Pattern](https://refactoring.guru/design-patterns/factory-method)
-
 
 We now want to refactor the code so that when the characters are created, they are put in a random location in a grid of length 5. 
 

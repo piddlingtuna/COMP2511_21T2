@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 /**
  * Plays the game with a command line interface.
- * 
- * @author Nick Patrikeos
+ *
  */
 public class Game {
     

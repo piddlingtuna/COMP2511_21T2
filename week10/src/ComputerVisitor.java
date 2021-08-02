@@ -7,6 +7,14 @@ public class ComputerVisitor {
         ComputerComponent mouse = new Mouse("Bluetooth mouse");
         ComputerVisitor visitor = new ComputerVisitor();
 
+    /*
+        computer.accept(visitor);
+        visitor.validate();
+        
+        computer.accept(visitor);
+        keyboard.accept(visitor);
+        mouse.accept(visitor);
+    */
     }
 
 }

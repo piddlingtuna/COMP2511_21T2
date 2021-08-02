@@ -10,6 +10,11 @@ public class Knight extends CharacterBase {
     public Knight(int x, int y) {
         super(x, y);
     }
+    
+    @Override
+    public void specialAction() {
+        System.out.println("This is a special action.");
+    }
 
     @Override
     public void attack(Character victim) {

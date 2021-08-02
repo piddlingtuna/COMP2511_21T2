@@ -45,11 +45,10 @@ public class Game {
     public static void main(String[] args) {
         Game game = new Game();
 
-        /*
-        game.addCharacter(new King(0, 0));
+        
+        game.addCharacter(CharacterFactory.createKing());
         game.addCharacter(new Dragon(0, 1));
         game.addCharacter(new Queen(2, 2));
-        */
 
         game.play();
     }

@@ -7,6 +7,7 @@ import java.util.List;
  *
  */
 public abstract class CharacterBase implements Character {
+    // implements Character nothing to do with Template
     private int healthPoints;
 
     private int x, y;
@@ -37,6 +38,11 @@ public abstract class CharacterBase implements Character {
     public void damage(int points) {
         healthPoints -= points;
     }
+    
+    /**
+    * 
+    */
+    public void specialAction() {}
 
     /**
      * Attempts to make a move to a square in the game, given all of the characters
@@ -49,6 +55,8 @@ public abstract class CharacterBase implements Character {
         if (!canMove(this.x - x, this.y - y)) {
             return MoveResult.INVALID;
         }
+        
+        specialAction();
 
         for (Character character : characters) {
             if (character != this && character.getX() == x && character.getY() == y) {
@@ -62,9 +70,36 @@ public abstract class CharacterBase implements Character {
 
         return MoveResult.SUCCESS;
     }
+    
+    /*
+    public MoveResult makeMove(...) {
+        return strategy.makeMove();
+    }
+    
+    public void changeStrategy(Strategy strategy) {
+        this.strategy = strategy;
+    }
+    */
 
     public String toString() {
         return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
     }
+    
+     /**
+     * This character attacks the given victim, causing them damage according to
+     * their rules.
+     *
+     * @param victim
+     */
+    public abstract void attack(Character victim);
+
+    /**
+     * Can this character move by the given amount along the x and y axes.
+     *
+     * @param x
+     * @param y
+     * @return True if they can move by that amount, false otherwise
+     */
+    public abstract boolean canMove(int dx, int dy);
 
 }

@@ -3,17 +3,63 @@
 ## Updates
 
 - Milestone 2 hasn't been marked yet (sorry). I will email feedback instead.
-- No lab next week. Next week Jun will join the demos.
+- No lab this week. Next week Jun will join the demos.
 - Exam structure is out [here](https://www.cse.unsw.edu.au/~cs2511/21T2/SampleExam/SampleExam.html).
-
+- Make sure JUnit works.
 
 ## A. Builder Pattern 
+
+public class HouseBuilder {
+
+    private Windows windows
+
+    public HouseBuilder() {}
+    
+    public HouseBuilder addWindows(Windows windows) {
+    
+    }
+    
+    public HouseBuilder makeFancyHouse(HouseBuilder builder) {
+       return builder.addExpensiveDoors();
+    }
+    
+    public House construct() {
+        return new House(windows, ...)
+    }
+}
+
+createBuilder() // returns HouseBuilder
+.addWindows(windows) // returns HouseBuilder
+.addSwimmingPool()
+.construct(); // 
+
+createBuilder() // returns HouseBuilder
+.addWindows(windows) // returns HouseBuilder
+.addSwimmingPool()
+
+
+
+HouseBuilder builder = createBuilder();
+builder.addWindows();
+builder.addSwimmingPool();
+return builder.construct();
+
+public class House {
+
+    public House(Windows windows, Doors doors, HasSwimmining hasSwimming) {
+    
+    }
+    
+
+}
 
 [Builder Pattern](https://refactoring.guru/design-patterns/builder)
 
 In this exercise we are going to analyse the testing infrastructure we provided you in the Blackout assignment and how it uses the Builder Pattern to make construction of objects and testing easier.
 
 Analyse the `TestHelper` and `ResponseHelper` classes.
+
+// If there is a really complex class with complex construction
 
 
 ## Game
@@ -29,6 +75,9 @@ In a simple game, different types of characters move around on a grid fighting e
 * A dragon can only move up, down, left or right, and has a 1 in 6 chance of inflicting 20 points of damage.
 
 Look at the `CharacterBase` class.
+
+Similar to strategy - use Template if you have really a large algorithm
+Strategy can change behavourial
 
 
 ### C. Decorator Pattern

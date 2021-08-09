@@ -1,20 +1,14 @@
+public interface ComputerVisitor {
 
-public class ComputerVisitor {
+    /**
+     * Validate the visitor
+     */
+    public void validate();
 
-    public static void main(String[] args) {
-        ComputerComponent computer = new Computer("Corelli", 500);
-        ComputerComponent keyboard = new Keyboard("Mechanical keyboard");
-        ComputerComponent mouse = new Mouse("Bluetooth mouse");
-        ComputerVisitor visitor = new ComputerVisitor();
+    public void visit(Computer computer);
 
-    /*
-        computer.accept(visitor);
-        visitor.validate();
-        
-        computer.accept(visitor);
-        keyboard.accept(visitor);
-        mouse.accept(visitor);
-    */
-    }
+    public void visit(Keyboard keyboard);
+
+    public void visit(Mouse mouse);
 
 }

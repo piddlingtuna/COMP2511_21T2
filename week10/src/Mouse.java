@@ -11,4 +11,11 @@ public class Mouse implements ComputerComponent {
         return name;
     }
     
+    @Override
+    public void accept(ComputerVisitor visitor) {
+        // Actually uses `public void visit(Mouse mouses)`
+        // Example of overloading
+        visitor.visit(this);
+    }
+
 }

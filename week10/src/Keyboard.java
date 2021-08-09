@@ -1,4 +1,3 @@
-
 public class Keyboard implements ComputerComponent {
 
     private String name;
@@ -20,5 +19,12 @@ public class Keyboard implements ComputerComponent {
     public String toString() {
         return name;
     }
-
+    
+    @Override
+    public void accept(ComputerVisitor visitor) {
+        // Actually uses `public void visit(Keyboard keyboard)`
+        // Example of overloading
+        visitor.visit(this);
+    }
+    
 }

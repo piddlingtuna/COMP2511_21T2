@@ -16,6 +16,12 @@ public class Computer implements ComputerComponent {
     public int getMemory() {
         return memory;
     }
-    
 
+    @Override
+    public void accept(ComputerVisitor visitor) {
+        // Actually uses `public void visit(Computer computer)`
+        // Example of overloading
+        visitor.visit(this);
+    }
+    
 }

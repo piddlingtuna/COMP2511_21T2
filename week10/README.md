@@ -12,13 +12,25 @@ Looking at mouse Bluetooth mouse.
 
 In particular though, anyone which is visiting a `Computer` must be **validated** prior to being able to visit.
 
-Extend/modify the starter code to use the Visitor Pattern to allow different computer components to be visited. 
+Extend/modify the starter code in `src` to use the **Visitor Pattern** to allow different computer components to be visited.
 
 
 ## Kahoot
 
+The questions and answers are available [here](https://create.kahoot.it/share/comp2511-week-10-kahoot/fba8b040-a51e-4731-ab2e-07199d92c3ac
+).
+
+
+## MyExperience
+
+Please fill in MyExperience [here](https://myexperience.unsw.edu.au/unsw/).
+
 
 ## General Revision
 
+Any questions?
 
-## Good Luck and Good Bye
+
+## That's all!
+
+Good luck and good bye :)

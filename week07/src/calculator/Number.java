@@ -1,6 +1,8 @@
 package calculator;
 
-// Base case
+/**
+ * Base case of composite pattern
+ */
 public class Number implements Expression {
 
     private double number; // like 5

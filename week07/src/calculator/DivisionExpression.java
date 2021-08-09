@@ -1,5 +1,8 @@
 package calculator;
 
+/**
+ * Recursive case of composite pattern
+ */
 public class DivisionExpression implements Expression {
     
     private Expression e1;
@@ -15,10 +18,11 @@ public class DivisionExpression implements Expression {
      * @postconditins - e1 / e2
      */
     public double compute() {
+        // Example of defensive programming
         assert(e1 != null && e2 != null);
-        // divisive programming
+        // Example of defensive programming
         if (e2.compute() == 0) {
-            throw new CalculatorException("does not meet precondition")
+            // throw new CalculatorException("does not meet precondition");
         }
         return e1.compute() / e2.compute();
     }

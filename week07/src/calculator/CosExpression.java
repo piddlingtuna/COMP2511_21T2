@@ -1,5 +1,8 @@
 package calculator;
 
+/**
+ * Recursive case of composite pattern
+ */
 public class CosExpression implements Expression {
 
     private Expression angle;

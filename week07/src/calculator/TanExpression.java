@@ -1,5 +1,8 @@
 package calculator;
 
+/**
+ * Recursive case of composite pattern
+ */
 public class TanExpression implements Expression {
 
     private Expression angle;

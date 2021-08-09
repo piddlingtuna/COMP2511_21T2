@@ -1,6 +1,8 @@
 package calculator;
 
-// Recursive Case
+/**
+ * Recursive case of composite pattern
+ */
 public class MultiplicationExpression implements Expression {
     
     private Expression e1;

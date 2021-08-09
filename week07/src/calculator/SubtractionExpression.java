@@ -1,5 +1,8 @@
 package calculator;
 
+/**
+ * Recursive case of composite pattern
+ */
 public class SubtractionExpression implements Expression {
     
     private Expression e1;

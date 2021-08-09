@@ -67,12 +67,26 @@ while (iter.hasNext()) {
 Implement the methods so that the tests pass, using an `ArrayList` to store the internal data structure. Answer the following questions:
 
 1. What is `E`? 
-// parametrized type
+
+Generic type
+
 
 2. What is the `Iterable` interface? Why does it have an `E` as well? What methods does it force us to implement?
 
+Iterable - something that can be iterated over.
+Parameterised as .next() it will return elements of type E
+Forces us to implement the .iterator() method.
+
+
 3. When completing `toArrayList`, why do we need to make a copy rather than just returning our internal ArrayList?
+
+We don't want to break encapsulation by giving the keys to our ArrayList
+
+
 4. What does the `.iterator()` method allow us to do? Discuss the test inside `StackTest.java`.
+
+`.iterator()` allows us to loop through it like a normal collection
+
 
 ### Part 2 - Utility Functions & Iterators
 
@@ -83,6 +97,11 @@ public static Integer sumStack(Stack<? extends Integer> stack);
 ```
 
 5. What does the `<? extends Type>` and `<? super Type>` mean?
+
+extends - the parameterised type must be a class or **subclass** of the given type.
+super - the parameterised type must be a class or **superclass** of the given type.
+
+
 6. How could we change our class definition to restrict the parameterisation?
 
 ```java
@@ -95,16 +114,12 @@ Having pushed the words "hello", "how", "are", "you", "today" on, the following 
 [today you are how hello]
 ```
 
+See `src/stack/Stack.java`.
+
 7. What is the difference between `?` and `E`?
+
+`?` can't be referred to as a type, whereas `E` can (they perform a similar conceptual role).
+
 8. We need to go through the stack and print out each element with a space, except for the last one (which doesn't have a space). There are a couple of ways to do this, but create an `Iterator` and use the `.next()` method to traverse the stack.
 
-## B. Refactoring to Patterns
-
-### File System Viewer
-
-Your task is to refactor a simple FileSystem viewer using both low level and design level refactoring to enable you to have an estimation of a file size (that updates as you open inner folders).
-
-Here is some hints:
-- You'll want some backend structure to represent the file system.
-- Since the file size estimation is going to be lazy you'll want some way to communicate changes into the model including re-estimations of file sizes.
-- Don't just recalculate the file sizes with every changes, only stat what you need to.
+See `src/stack/Stack.java`.

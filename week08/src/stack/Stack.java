@@ -12,8 +12,9 @@ import java.util.List;
  */
 public class Stack<A> implements Iterable<A> {
     
+    // Generics is done at compile time (static).
     private List<A> elements = new ArrayList<A>();
-    // compile check
+    
     /**
      * Pushes an element onto the top of the stack.
      * @param element
@@ -40,6 +41,8 @@ public class Stack<A> implements Iterable<A> {
         return elements.get(elements.size() - 1);
     }
     
+    /*
+    For each generic type used, a different peek method is generated like:
     public String peek() {
         return elements.get(elements.size() - 1);
     }
@@ -51,19 +54,18 @@ public class Stack<A> implements Iterable<A> {
     public double peek() {
         return elements.get(elements.size() - 1);
     }
+    */
 
     /**
      * Returns an iterator to the internal data structure of the stack.
      */
     public Iterator<A> iterator() {
-        // protect encapsulation
-        // shallow copy
-        List<Integer> copy = new ArrayList<Integer>();
+        // Copy list to protect encapsulation.
+        // List is copied but references the same objects in the original list (shallow copy).
+        // Shallow copy means encapsulation is still broken.
+        List<A> copy = new ArrayList<A>();
         Collections.reverse(copy);
         return copy.iterator();
-        // push(5)
-        // push(10)
-
     }
 
     /**
@@ -74,29 +76,36 @@ public class Stack<A> implements Iterable<A> {
     }
     
     /**
+     * Returns the stack as an ArrayList
+     */
+    public List<A> toArrayList() {
+        return new ArrayList<A>(elements);
+    }
+    
+    /**
      * Returns the stack as an List
      */
-    public List<A> List() {
-        // return (ArrayList<A>) elements;
+    public List<A> toList() {
+        // `ArrayList` is a concrete class of the `List` interface.
         return new ArrayList<A>(elements);
     }
 
     public static Integer sumStack(Stack<? extends Integer> stack) {
+        // ? extends Integer means ? is a subclass of Integer.
+        // int, short int, long int are subclasses of Integer.
+        // ? super Integer means ? is a superclass of Integer.
         
-        // ? extends Integer
-        // means ? is a subclass of Integer
-        // int, short int, long int
-        // ? super Integer
         int total = 0;
         for (Integer e : stack.elements) {
             total += e;
         }
-        // subclass has more properties than the super class
+        // A subclass has more properties than its super class
         return total;
     }
 
     public static void prettyPrint(Stack<?> stack) {
-        // string()
+        // Use ? mean you don't need to know the type.
+        
         System.out.print("[");
         if (stack.size() == 0) {
             System.out.print("]");

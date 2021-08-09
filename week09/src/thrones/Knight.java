@@ -4,16 +4,17 @@ package thrones;
  * A knight can move like a knight in chess (in an L shape), and has a 1 in 2
  * chance of inflicting 10 points of damage when attacking.
  *
+ * Knight uses the template pattern.
  */
 public class Knight extends CharacterBase {
-
     public Knight(int x, int y) {
         super(x, y);
     }
     
     @Override
     public void specialAction() {
-        System.out.println("This is a special action.");
+        // This is a hook in a Template pattern.
+        System.out.println("This is a special action of a Knight.");
     }
 
     @Override
@@ -28,5 +29,4 @@ public class Knight extends CharacterBase {
         dy = Math.abs(dy);
         return (dx == 1 && dy == 2 || dx == 2 && dy == 1);
     }
-
 }

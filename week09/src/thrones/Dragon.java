@@ -4,6 +4,7 @@ package thrones;
  * A dragon can only move up, down, left or right, and has a 1 in 6 chance of
  * inflicting 20 points of damage.
  *
+ * Dragon uses the template pattern.
  */
 public class Dragon extends CharacterBase {
 
@@ -13,17 +14,16 @@ public class Dragon extends CharacterBase {
 
     @Override
     public void attack(Character victim) {
-        if (Math.random() < 1.0/6)
+        if (Math.random() * 6 < 1) {
             victim.damage(20);
+        }
     }
 
     @Override
     public boolean canMove(int dx, int dy) {
         dx = Math.abs(dx);
         dy = Math.abs(dy);
-        return (dx == 0 || dy == 0);
+        return (dx == 1 && dy == 0 || dx == 0 && dy == 1);
     }
 
 }
-
-// new Dragon(new Random(System.currentTimeMillis()).nextInt(), new Random(System.currentTimeMillis()).nextInt());

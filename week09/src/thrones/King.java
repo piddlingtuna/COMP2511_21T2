@@ -4,9 +4,9 @@ package thrones;
  * A king can move one square in any direction (including diagonally), and
  * always causes 8 points of damage when attacking.
  *
+ * King uses the template pattern.
  */
 public class King extends CharacterBase {
-
     public King(int x, int y) {
         super(x, y);
     }
@@ -22,5 +22,4 @@ public class King extends CharacterBase {
         dy = Math.abs(dy);
         return (dx <= 1 && dy <= 1);
     }
-
 }

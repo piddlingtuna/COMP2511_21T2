@@ -5,7 +5,11 @@ import java.util.List;
 /**
  * The character interface used in the game.
  *
-*/
+ * If just implementing template pattern, this interface is not needed
+ * since the abstract class `CharacterBase` would suffice. However,
+ * the decorator pattern needs an interface so decorators can
+ * delegate behaviour.
+ */
 public interface Character {
     public int getHealthPoints();
 
@@ -38,5 +42,4 @@ public interface Character {
     public boolean canMove(int dx, int dy);
 
     public MoveResult makeMove(int x, int y, List<Character> characters);
-
 }

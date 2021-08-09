@@ -3,17 +3,35 @@
 ## Updates
 
 - Milestone 2 hasn't been marked yet (sorry). I will email feedback instead.
-- No lab this week. Next week Jun will join the demos.
+- No lab this week. Next week, Jun will join the demos.
 - Exam structure is out [here](https://www.cse.unsw.edu.au/~cs2511/21T2/SampleExam/SampleExam.html).
-- Make sure JUnit works.
+- Make sure JUnit works. It will be used in the exam.
+
 
 ## A. Builder Pattern 
+
+The Builder pattern is used to avoid really complex construction like:
+```java
+public class House {
+    public House(Windows windows, Doors doors, HasSwimmining hasSwimming, ...) {
+        this.windows = windows;
+        this.doors = doors;
+        this.hasSwimming = hasSwimming;
+        ...    
+    }
+}
+```
+
+```java
+public class House {
+    public static HouseBuilder createBuilder() {
+        return new HouseBuilder();
+    }
+}
 
 public class HouseBuilder {
 
     private Windows windows
-
-    public HouseBuilder() {}
     
     public HouseBuilder addWindows(Windows windows) {
     
@@ -27,39 +45,34 @@ public class HouseBuilder {
         return new House(windows, ...)
     }
 }
+```
 
-createBuilder() // returns HouseBuilder
+```java
+House.createBuilder() // returns HouseBuilder
 .addWindows(windows) // returns HouseBuilder
 .addSwimmingPool()
 .construct(); // 
+```
 
-createBuilder() // returns HouseBuilder
+```java
+House.createBuilder() // returns HouseBuilder
 .addWindows(windows) // returns HouseBuilder
 .addSwimmingPool()
+```
 
-
-
-HouseBuilder builder = createBuilder();
+If each method did not return the `HouseBuilder`, code would look uglier:
+```java
+HouseBuilder builder = House.createBuilder();
 builder.addWindows();
 builder.addSwimmingPool();
 return builder.construct();
-
-public class House {
-
-    public House(Windows windows, Doors doors, HasSwimmining hasSwimming) {
-    
-    }
-    
-
-}
+```
 
 [Builder Pattern](https://refactoring.guru/design-patterns/builder)
 
-In this exercise we are going to analyse the testing infrastructure we provided you in the Blackout assignment and how it uses the Builder Pattern to make construction of objects and testing easier.
+Analyse the testing infrastructure we provided you in the Blackout assignment and how it uses the Builder Pattern to make construction of objects and testing easier.
 
-Analyse the `TestHelper` and `ResponseHelper` classes.
-
-// If there is a really complex class with complex construction
+See the `TestHelper` and `ResponseHelper` classes.
 
 
 ## Game
@@ -76,8 +89,7 @@ In a simple game, different types of characters move around on a grid fighting e
 
 Look at the `CharacterBase` class.
 
-Similar to strategy - use Template if you have really a large algorithm
-Strategy can change behavourial
+The Template pattern has a similar use case as the Strategy Pattern. A notable difference is that the Template pattern is static (involves extending from abstract classes) while the Strategy pattern is dynamic (can change behaviour during runtime by changign strategy class). The Template pattern is preferred if different behaviours share a common algorithm.
 
 
 ### C. Decorator Pattern
@@ -98,6 +110,8 @@ We want to add different sorts of armour.
 
 Assume that, as this game takes place in a virtual world, there are no restrictions on the number of pieces of armour a character can wear and that the "order" in which armour is worn affects how it works.
 
+Look at the `CharacterDecorator` class.
+
 
 ### D. Factory Pattern
 
@@ -105,6 +119,11 @@ Assume that, as this game takes place in a virtual world, there are no restricti
 
 We now want to refactor the code so that when the characters are created, they are put in a random location in a grid of length 5. 
 
-1. How does the Factory Pattern (AKA Factory Method) allow us to abstract construction of objects, and how will it improve our design with this new requirement?
+1. How does the Factory Pattern allow us to abstract construction of objects, and how will it improve our design with this new requirement?
+
+We can abstract the construction of characters so we don't have to directly deal with constructors. This means we could use a subtype like `MegaQueen` instead of `Queen` without changing the interface of `CharacterFactory.createQueen`. We could also abstract generating random numbers, simplifying object creation.
+
 
 2. Use the Factory Pattern to create a series of object factories for each of the character types, and change the `main` method of `Game.java` to use these factories.
+
+See `src/thrones/CharacterFactory.java`.

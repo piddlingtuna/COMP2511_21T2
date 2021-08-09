@@ -4,8 +4,9 @@ import java.util.List;
 
 /**
  * Base class for the decorator pattern.
- *
-*/
+ 
+ * This eliminates most boilerplate in the decorator classes.
+ */
 public class CharacterDecorator implements Character {
     private Character character;
 

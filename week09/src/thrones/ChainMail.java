@@ -1,5 +1,9 @@
 package thrones;
 
+
+/**
+ * ChainMail uses the decorater pattern.
+ */
 public class ChainMail extends CharacterDecorator {
     public ChainMail(Character character) {
         super(character);

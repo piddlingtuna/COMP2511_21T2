@@ -1,6 +1,30 @@
 package thrones;
 
-import java.util.List;
+/**
+ * Helmet uses the decorator pattern.
+ */
+public class Helmet extends CharacterDecorator {
+    private Character character;
+
+    public Helmet(Character character) {
+        super(character);
+    }
+
+    @Override
+    public void damage(int points) {
+        character.damage(Math.max(points - 1, 0));
+    }
+    
+    /*
+    Example use of Decorator pattern:
+    new ChainMail(new Helmet(new King(0, 0)));
+    */
+}
+
+/*
+If the `CharacterDecorator` class was not used,
+every decorator class would have to implement all methods
+by delegating to the `character`.
 
 public class Helmet implements Character {
     private Character character;
@@ -47,8 +71,6 @@ public class Helmet implements Character {
     @Override
     public String toString(){
         return character.toString();
-    }
-    
+    }  
 }
-
-new ChainMail(new Helmet(new King(0, 0)));
+*/

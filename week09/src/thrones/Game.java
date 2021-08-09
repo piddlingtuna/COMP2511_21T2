@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 /**
  * Plays the game with a command line interface.
- *
  */
 public class Game {
     
@@ -52,4 +51,4 @@ public class Game {
 
         game.play();
     }
-}   
+}

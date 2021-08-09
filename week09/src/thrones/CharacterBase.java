@@ -4,10 +4,9 @@ import java.util.List;
 
 /**
  * A base character in template pattern.
- *
+ * This 
  */
 public abstract class CharacterBase implements Character {
-    // implements Character nothing to do with Template
     private int healthPoints;
 
     private int x, y;
@@ -40,7 +39,8 @@ public abstract class CharacterBase implements Character {
     }
     
     /**
-    * 
+    * This is a hook. By default, there is no behaviour.
+    * However, it lets subclasses add behaviour in the algorithm (`makeMove` method).
     */
     public void specialAction() {}
 
@@ -81,6 +81,7 @@ public abstract class CharacterBase implements Character {
     }
     */
 
+    @Override
     public String toString() {
         return getClass().getSimpleName() + " at (" + getX() + ", " + getY() + "), health = " + healthPoints;
     }

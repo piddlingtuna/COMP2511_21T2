@@ -51,10 +51,12 @@ Inside `src/stack`, there are a series of stubs for a `Stack` class which takes 
 
 Iterator is a design pattern baked into the Java language.
 
+```java
 Iterator iter = tree.iterator();
 while (iter.hasNext()) {
     E item = iter.next();
 }
+```
 
 [Iterator](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Iterator.html)
 
@@ -100,9 +102,7 @@ Having pushed the words "hello", "how", "are", "you", "today" on, the following 
 
 ### File System Viewer
 
-Your task is to refactor a simple FileSystem viewer using both low level and design level refactoring to enable you to have an estimation of a file size (that updates as you open inner folders).  The original code consists of only 150 lines of code and you won't be writing significantly more than that.
-
-The folder `fs` contains a very simple file system viewer using a TreeView that was pretty heavily modified from a beautiful guide given by; https://huguesjohnson.com/programming/java/javafx-treeview-browser/ (license in LICENSE).
+Your task is to refactor a simple FileSystem viewer using both low level and design level refactoring to enable you to have an estimation of a file size (that updates as you open inner folders).
 
 Here is some hints:
 - You'll want some backend structure to represent the file system.
